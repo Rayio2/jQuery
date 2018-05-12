@@ -1,0 +1,17 @@
+ .window{
+     width:300px;
+    overflow:hidden
+      
+  }
+  #container>img{
+       object-fit: cover;
+  }
+  .container{
+      display:flex;
+      flex-direction:row;
+      transition:all 0.5s
+  }
+.red{
+    color: red;
+}
+  
