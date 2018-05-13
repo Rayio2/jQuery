@@ -1,26 +1,17 @@
-.window{
-    overflow: hidden;
-    width:300px;               height:200px;
+ .window{
+     width:300px;
+    overflow:hidden
+      
   }
-  .imgs{
-    position: relative;
+  #container>img{
+       object-fit: cover;
   }
-  .imgs > img{
-    position: absolute;
-    width:300px;            height:200px;
-    transition:all 0.5s
+  .container{
+      display:flex;
+      flex-direction:row;
+      transition:all 0.5s
   }
-  .imgs>img.current{
-    position: absolute;
-    left:0
-  }
-  .imgs>img.left{
-    position: absolute;
-    left:-300px
+.red{
+    color: red;
+}
   
-  }
-  .imgs>img.right{
-    position: absolute;
-    left:300px
-  
-  }

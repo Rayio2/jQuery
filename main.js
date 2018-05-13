@@ -1,19 +1,39 @@
-var allimgs=$('.imgs>img')
-$(allimgs[0]).addClass('current')
-$(allimgs[1]).addClass('right')
-$(allimgs[2]).addClass('right')
-var n=0
-setInterval(()=>{
-$(allimgs[n]).removeClass('current').addClass('left')
+var allbuttons = $('#buttondiv>button')
 
-if(n===2) n = -1
-$(allimgs[n+1]).removeClass('right').addClass('current')
+var timerId = setTimer();
+var n = 0
 
-$(allimgs[n]).one('transitionend',function(x)
-{
- $(x.currentTarget).removeClass('left').addClass('right')
+function setTimer() {
+    return setInterval(() => {
+      n += 1
+      allbuttons.eq(n % 3).trigger('click')
+      if(n>=3)n=n%3
+    }, 1000)
+  }
+  
+var buttonAct = function(xxx){
+  $(allbuttons[xxx]).addClass('red')
+  $(allbuttons[xxx]).siblings().removeClass('red')
+}
+
+for(let i =0;i<allbuttons.length;i++)
+  {
+      $(allbuttons[i]).on('click',function(x)
+      {
+      var index = $(x.currentTarget).index()
+      var p = index * -300
+      buttonAct(index)
+      $('#container').css(
+        {
+          transform: 'translate('+ p +'px)'
+        })
+      })
+  }
+
+$('.window').on('mouseenter',function(){
+  window.clearInterval(timerId)
 })
 
-n=n+1
-
-},3000)
+$('.window').on('mouseleave',function(){
+  timerId=setTimer() 
+})
